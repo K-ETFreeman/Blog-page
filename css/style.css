@@ -2212,7 +2212,7 @@ body {
   }
 
   .card__text {
-    font-size: calc(12px + (100vw - 1440px) * (0.00833));
+    font-size: calc(14px + (100vw - 1440px) * (0.00417));
   }
 
   .card__text {
@@ -2492,7 +2492,7 @@ body {
   }
 
   .post__text {
-    font-size: calc(12px + (100vw - 1440px) * (0.00833));
+    font-size: calc(14px + (100vw - 1440px) * (0.00417));
   }
 
   .post__text {
@@ -2978,7 +2978,7 @@ body {
   }
 
   .card__text {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .card__text {
@@ -3098,7 +3098,7 @@ body {
   }
 
   .post__text {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .post__tags {
