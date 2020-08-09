@@ -12,6 +12,25 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 }
 
 ;
+
+(function (arr) {
+  arr.forEach(function (item) {
+    if (item.hasOwnProperty('remove')) {
+      return;
+    }
+
+    Object.defineProperty(item, 'remove', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function remove() {
+        this.parentNode.removeChild(this);
+      }
+    });
+  });
+})([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+
+;
 {
   var button = document.getElementById('up');
   var prevScroll,
@@ -65,7 +84,6 @@ document.querySelectorAll('.interactive-trigger').forEach(function (item) {
 {
   var setCoords = function setCoords(item, parCoords) {
     item.style.setProperty('top', parCoords.bottom + 'px');
-    console.log(parCoords);
     if (parCoords.left + item.offsetWidth < window.innerWidth) item.style.setProperty('left', parCoords.left + 'px');else item.style.setProperty('right', '0px');
   };
 
@@ -78,7 +96,7 @@ document.querySelectorAll('.interactive-trigger').forEach(function (item) {
     if (trigger == 'click') {
       parent.onclick = function (e) {
         e.preventDefault();
-        if (item.classList.contains('active')) return;
+        if (item.classList.contains('active')) return item.classList.remove('active');
         setCoords(item, parent.getBoundingClientRect(), parent);
         item.classList.add('active');
       };
